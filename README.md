@@ -1,53 +1,60 @@
-Clara AI Automation Pipeline
-Overview
+# Clara AI Automation Pipeline
 
-This project implements an automation pipeline that converts customer conversations into deployable AI voice agents for Clara Answers.
+## Overview
+This project implements an **automation pipeline** that converts customer conversations into deployable AI voice agents for **Clara Answers**.
 
-The system processes:
+The system processes two types of inputs:
 
-Demo Call → Agent Draft (v1)
+Demo Call → Agent Draft (v1)  
 Onboarding Call → Agent Update (v2)
 
-It automatically extracts operational rules from transcripts and generates structured configurations for AI voice agents.
+The pipeline extracts operational rules from transcripts and generates **structured configurations for AI voice agents**.
 
-The solution follows the assignment requirements for:
+This solution meets the assignment requirements for:
 
-Zero cost tooling
+- Zero-cost tooling
+- Structured data extraction
+- Versioned agent configuration
+- Reproducible automation
+- Batch processing
 
-Structured data extraction
+---
 
-Versioned agent configuration
+# System Architecture
 
-Reproducible automation
+```
+                Demo Call Transcript
+                        │
+                        ▼
+             Account Memo Extraction
+                        │
+                        ▼
+              Retell Agent Draft (v1)
+                        │
+                        ▼
+                Stored in Repository
 
-Batch processing
 
-System Architecture
-Demo Call Transcript
-        │
-        ▼
-Account Memo Extraction
-        │
-        ▼
-Retell Agent Draft (v1)
-        │
-        ▼
-Stored in Repository
+           Onboarding Call Transcript
+                        │
+                        ▼
+                Update Extraction
+                        │
+                        ▼
+            Updated Account Memo (v2)
+                        │
+                        ▼
+              Updated Agent Spec
+                        │
+                        ▼
+               Changelog (v1 → v2)
+```
 
-Onboarding Call Transcript
-        │
-        ▼
-Update Extraction
-        │
-        ▼
-Updated Account Memo (v2)
-        │
-        ▼
-Updated Retell Agent Spec
-        │
-        ▼
-Changelog (v1 → v2)
-Project Structure
+---
+
+# Project Structure
+
+```
 clara-ai-assignment
 │
 ├── data
@@ -78,106 +85,126 @@ clara-ai-assignment
 │   └── onboarding_to_v2.json
 │
 └── README.md
-Pipeline A — Demo Call → Agent v1
+```
 
-Input:
+---
 
+# Pipeline A — Demo Call → Agent v1
+
+### Input
 Demo call transcript
 
-Process:
+### Process
 
-Extract structured account memo
+1. Extract structured account memo  
+2. Generate Retell agent draft  
+3. Store versioned configuration  
 
-Generate Retell agent draft
+### Output
 
-Store versioned configuration
-
-Outputs:
-
+```
 outputs/accounts/<account_id>/v1/account_memo.json
 outputs/accounts/<account_id>/v1/agent_spec.json
-Pipeline B — Onboarding → Agent v2
+```
 
-Input:
+---
 
-Onboarding transcript
+# Pipeline B — Onboarding Call → Agent v2
 
-Process:
+### Input
+Onboarding call transcript
 
-Extract configuration updates
+### Process
 
-Patch the v1 account memo
+1. Extract configuration updates  
+2. Patch the **v1 account memo**  
+3. Generate updated agent spec  
+4. Produce a changelog  
 
-Generate updated agent spec
+### Output
 
-Produce changelog
-
-Outputs:
-
+```
 outputs/accounts/<account_id>/v2/account_memo.json
 outputs/accounts/<account_id>/v2/agent_spec.json
 outputs/accounts/<account_id>/v2/changes.md
-Running the Pipeline
+```
 
-Run the batch pipeline:
+---
+
+# Running the Pipeline
+
+Run the full pipeline using the batch script:
+
+```
 python scripts/run_batch.py
+```
 
-This processes:
+This will automatically process:
 
-Demo → v1 agent
-Onboarding → v2 agent
-Generate changelog
-n8n Workflow
+Demo Call → Agent v1  
+Onboarding Call → Agent v2  
+Generate Changelog
 
-Two automation workflows are included:
+---
 
+# n8n Workflow
+
+Two workflow automations are included:
+
+```
 workflows/demo_to_v1.json
 workflows/onboarding_to_v2.json
+```
 
-These workflows trigger the pipeline scripts and orchestrate the processing steps.
+These workflows orchestrate the pipeline by triggering the Python scripts and managing the processing flow.
 
-Zero Cost Implementation
+---
 
-This project uses only free tooling:
+# Zero-Cost Implementation
 
-Python
+This project uses only **free tools**:
 
-Local file storage
-
-n8n (local Docker deployment)
-
-Open-source transcription tools
+| Tool | Purpose |
+|-----|--------|
+| Python | Core automation scripts |
+| Local file storage | Data persistence |
+| n8n (Docker) | Workflow orchestration |
+| Whisper / free transcription | Audio transcription |
 
 No paid APIs or services were used.
 
-Known Limitations
+---
 
-CRM integrations are mocked (Jobber integration not available yet)
+# Known Limitations
 
-Emergency routing rules rely on transcript clarity
+- CRM integrations are mocked (Jobber integration not yet available)
+- Emergency routing rules depend on transcript clarity
+- Transcription accuracy may affect extraction results
 
-Audio transcription quality may affect extraction accuracy
+---
 
-Future Improvements
+# Future Improvements
 
-If deployed in production, the following improvements would be implemented:
+With production access the system could be expanded to include:
 
-Automated speech-to-text pipeline
+- Automated speech-to-text pipeline
+- Structured database storage (Supabase)
+- Direct Retell API agent creation
+- Web dashboard for account configuration
+- Automated prompt QA validation
 
-Structured database storage (Supabase)
+---
 
-Direct Retell API agent creation
-
-Web dashboard for account configuration
-
-Automated QA validation of agent prompts
-
-Demo
+# Demo
 
 A short Loom walkthrough demonstrates:
 
-Running the pipeline
+- Running the pipeline
+- Generated outputs
+- Version updates from **v1 → v2**
 
-Generated outputs
+---
 
-Version updates (v1 → v2)
+# Author
+
+Automation pipeline developed as part of the **Clara Answers Intern Engineering Assignment**.
