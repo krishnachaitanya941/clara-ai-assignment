@@ -208,3 +208,7 @@ A short Loom walkthrough demonstrates:
 # Author
 
 Automation pipeline developed as part of the **Clara Answers Intern Engineering Assignment**.
+
+## loom Demo
+https://www.loom.com/share/7e509b0bd2dc4881a2296ae9ebc0a34a
+
