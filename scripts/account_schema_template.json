@@ -1,0 +1,46 @@
+{
+  "account_id": "",
+  "company_name": "",
+  "contact_name": "",
+  "contact_email": "",
+  "contact_phone": "",
+
+  "business_hours": {
+    "days": [],
+    "start": "",
+    "end": "",
+    "timezone": ""
+  },
+
+  "office_address": "",
+
+  "services_supported": [],
+  "services_not_supported": [],
+
+  "emergency_definition": [],
+
+  "emergency_routing_rules": {
+    "primary_contact": "",
+    "fallback_contact": "",
+    "after_hours_emergency": ""
+  },
+
+  "non_emergency_routing_rules": "",
+
+  "call_transfer_rules": {
+    "timeout_seconds": "",
+    "retry_count": "",
+    "fail_message": ""
+  },
+
+  "crm_integration": "",
+  "integration_constraints": [],
+
+  "after_hours_flow_summary": "",
+  "office_hours_flow_summary": "",
+
+  "pricing_plan": "",
+
+  "questions_or_unknowns": [],
+  "notes": ""
+}
