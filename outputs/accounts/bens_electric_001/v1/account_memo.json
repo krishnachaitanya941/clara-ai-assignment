@@ -1,0 +1,78 @@
+{
+  "account_id": "bens_electric_001",
+  "company_name": "Ben's Electric Solutions",
+  "contact_name": "Ben Penoyer",
+  "contact_email": "ben@benselectricsolutionsteam.com",
+  "contact_phone": "403-975-1773",
+
+  "business_hours": {
+    "days": [],
+    "start": "",
+    "end": "",
+    "timezone": ""
+  },
+
+  "office_address": "Calgary, Alberta, Canada",
+
+  "services_supported": [
+    "service calls",
+    "residential electrical work",
+    "commercial electrical work",
+    "renovations",
+    "troubleshooting",
+    "EV charger installation",
+    "hot tub electrical hookup",
+    "panel changes",
+    "outlet replacement",
+    "fixture replacement",
+    "tenant improvement electrical",
+    "new custom home electrical"
+  ],
+
+  "services_not_supported": [
+    "gemstone lighting installation",
+    "full hot tub installation (non-electrical work)"
+  ],
+
+  "emergency_definition": [
+    "gas station pump electrical failure",
+    "property manager emergency electrical issue"
+  ],
+
+  "emergency_routing_rules": {
+    "primary_contact": "Ben Penoyer",
+    "fallback_contact": "",
+    "after_hours_emergency": "Transfer emergency calls to Ben directly"
+  },
+
+  "non_emergency_routing_rules": "Collect caller name, phone number, address, job description, and preferred appointment time. Notify Ben through dashboard/email for scheduling.",
+
+  "call_transfer_rules": {
+    "timeout_seconds": "",
+    "retry_count": "",
+    "fail_message": "If transfer fails, inform the caller that the team will follow up shortly."
+  },
+
+  "crm_integration": "Jobber",
+
+  "integration_constraints": [
+    "Jobber integration with Clara currently under development",
+    "Manual entry required until integration is completed"
+  ],
+
+  "after_hours_flow_summary": "After hours, Clara should answer calls, identify emergencies, collect caller details, and transfer emergency issues to Ben. Non-emergency calls should be logged for follow-up the next business day.",
+
+  "office_hours_flow_summary": "During business hours Clara answers calls, qualifies the job type, collects caller information, and logs the request for scheduling or dispatch.",
+
+  "pricing_plan": "Starter plan $249/month for 500 minutes with a 3 month commitment",
+
+  "questions_or_unknowns": [
+    "Exact business hours were not confirmed",
+    "Exact timezone not explicitly stated",
+    "Transfer timeout rules not specified",
+    "Fallback emergency contact not specified",
+    "Whether operations manager Greg should receive notifications"
+  ],
+
+  "notes": "Ben has 30 years of electrical experience and has run his own company for 8 years. Currently operating three vans with subcontractors and plans to expand to five vans. Ben currently handles most administrative tasks and wants Clara to automate call handling and scheduling."
+}
